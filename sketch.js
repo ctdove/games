@@ -1,6 +1,7 @@
 function setup() {
     var cvn = createCanvas(500,500);
     cvn.background(0,0,0);
+    s = new snake();
 }
 
 var rct = 0
