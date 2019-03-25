@@ -1,3 +1,4 @@
+var s;
 function setup() {
     var cvn = createCanvas(500,500);
     cvn.background(0,0,0);
