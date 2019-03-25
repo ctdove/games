@@ -2,7 +2,9 @@ function snake () {
 	this.x = 30;
 	this.y = 30;
 	this.draw = function () {
-	rect(this.x,this.y,10,10);
+	rct = rect(this.x,this.y,10,10);
+	rct.fill(89);
+
 	}
 
 }
