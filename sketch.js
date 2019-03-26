@@ -2,19 +2,22 @@ var s;
 function setup() {
     var cvn = createCanvas(500,500);
     cvn.background(0,0,0);
-    s = new snake();
+    s = new Snake();
 }
-
-var rct = 0
 function draw() {
-    rct = rect(10,10,10,10);
-    rct.fill(255);
+  background(51);
+  s.move();
+  s.display();
 }
 
 function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
-    rct.xpos ++;
+  if (keyCode === UP_ARROW) {
+    s.dir(0, -1);
+  } else if (keyCode === DOWN_ARROW) {
+    s.dir(0, 1);
   } else if (keyCode === RIGHT_ARROW) {
-    rct.xpos = rct.xpos - 1;
+    s.dir(1, 0);
+  } else if (keyCode === LEFT_ARROW) {
+    s.dir(-1, 0);
   }
 }
