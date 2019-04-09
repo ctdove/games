@@ -1,15 +1,25 @@
 var s;
+var a;
 function setup() {
-    var cvn = createCanvas(500,500);
-    cvn.background(0,0,0);
-    s = new Snake();
-}
-function draw() {
-  background(51);
-  s.move();
-  s.display();
+  var cvn = createCanvas(300, 300);
+  cvn.background(0, 0, 0);
+  s = new Snake();
+  a = new Apple();
+  frameRate(20);
+  //s.grow();
 }
 
+function draw() {
+  background(51);
+  a.update();
+  s.update();
+  // Checks for death and resets
+  document.getElementById("score").innerHTML = s.size;
+  if (s.die() === true) {
+    s.reset();
+  }
+}
+// Key presses
 function keyPressed() {
   if (keyCode === UP_ARROW) {
     s.dir(0, -1);
@@ -20,4 +30,5 @@ function keyPressed() {
   } else if (keyCode === LEFT_ARROW) {
     s.dir(-1, 0);
   }
-}
+} 
+
