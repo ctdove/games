@@ -5,7 +5,7 @@ function setup() {
   cvn.background(0, 0, 0);
   s = new Snake();
   a = new Apple();
-  frameRate(20);
+  frameRate(10);
   //s.grow();
 }
 
