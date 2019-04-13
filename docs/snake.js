@@ -1,71 +1,80 @@
 var scl = 10;
 
 function Snake() {
-	this.x = 10;
-	this.y = 10;
-	this.xspeed = 0;
-	this.yspeed = 0;
+
+	this.total = 1;
+	this.x = [scl];
+	this.y = [scl];
+	this.x.speed = 0;
+	this.y.speed = 0;
+	this.size = this.x.length;
+
 
 	this.dir = function (x, y) {
-		this.xspeed = x * scl;
-		this.yspeed = y * scl;
+		this.x.speed = x * scl;
+		this.y.speed = y * scl;
 	}
 
 	this.move = function () {
-		//this.tail[0] += this.xspeed;
-		//this.tail[1] += this.yspeed;
-		var i;
-		for (i = 0; i < this.tail.length; i++) {
-			this.tail[i * 2] += this.xspeed;
-			this.tail[i * 2 + 1]  += this.yspeed;
+		if (this.x.length > 1) {
+			var i;
+			for (i = this.x.length - 1; i > 0; i--) {
+				this.x[i] = this.x[i - 1];
+				this.y[i] = this.y[i - 1];
+			}
 		}
+		this.x[0] += this.x.speed;
+		this.y[0] += this.y.speed;
 	}
 
 	this.update = function () {
 		this.move();
-		fill(225);
-		//rect(this.x, this.y, 10, 10);
 		this.eat();
+		fill(255);
 		var i;
-		for (i = 0; i < this.tail.length; i++) {
-			rect(this.tail[i * 2], this.tail[i * 2 + 1], scl, scl);
+		for (i = this.x.length - 1; i >= 0; i--) {
+			rect(this.x[i], this.y[i], scl, scl);
 		}
 	}
 
 	this.die = function () {
-		if (this.tail[0] === width || this.tail[0] === -10) {
+		if (this.x[0] === width || this.x[0] === -scl) {
 			return true;
-		} else if (this.tail[1] === height || this.tail[1] === -10) {
+		} else if (this.y[0] === height || this.y[0] === -scl) {
 			return true;
-		}
+		} 
 	}
 
 	this.reset = function () {
-		this.tail = [this.x, this.y];
-		this.dir(0, 0);
-		this.size = 1;
+		this.x = [scl];
+		this.y = [scl];
+		this.dir(0,0);
+		this.size = this.x.length;
+		this.total = 1;
 		a.repos();
 	}
 
-	this.tail = [this.x, this.y];
-	this.size = this.tail.length / 2;
-
 	this.eat = function () {
-		d = dist(this.tail[0], this.tail[1], a.x, a.y);
+		d = dist(this.x[0], this.y[0], a.x, a.y);
 		if (d < 1) {
 			a.repos();
-			this.size ++;
-			this.tail.push(this.tail[0] - 10, this.tail[1]);
+				this.x.push(this.x[this.x.length - 1] + this.x.speed);
+				this.y.push(this.y[this.y.length - 1] + this.y.speed);
+				this.size ++;
+			}
 		}
 	}
 
-}
+
+
 
 function Apple() {
+
 	this.x = Math.ceil(Math.random() * (width - scl) / scl) * scl;
 	this.y = Math.ceil(Math.random() * (height - scl) / scl) * scl;
 
 	this.update = function () {
+		fill(200, 0, 200);
 		rect(this.x, this.y, scl, scl);
 	}
 

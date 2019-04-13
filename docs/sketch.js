@@ -1,11 +1,11 @@
 var s;
 var a;
 function setup() {
-  var cvn = createCanvas(300, 300);
+  var cvn = createCanvas(600, 600);
   cvn.background(0, 0, 0);
   s = new Snake();
   a = new Apple();
-  frameRate(10);
+  frameRate(scl);
   //s.grow();
 }
 
@@ -14,7 +14,8 @@ function draw() {
   a.update();
   s.update();
   // Checks for death and resets
-  document.getElementById("score").innerHTML = s.size;
+  //document.getElementById("score").innerHTML = s.size;
+  //document.getElementById("tail").innerHTML = s.x + "," + s.y;
   if (s.die() === true) {
     s.reset();
   }
@@ -31,4 +32,3 @@ function keyPressed() {
     s.dir(-1, 0);
   }
 } 
-
