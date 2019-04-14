@@ -1,4 +1,5 @@
 var scl = 10;
+var spd = 1;
 
 function Snake() {
 

@@ -1,7 +1,7 @@
 var s;
 var a;
 function setup() {
-  var cvn = createCanvas(600, 600);
+  var cvn = createCanvas(400, 400);
   cvn.background(0, 0, 0);
   s = new Snake();
   a = new Apple();
@@ -14,8 +14,7 @@ function draw() {
   a.update();
   s.update();
   // Checks for death and resets
-  //document.getElementById("score").innerHTML = s.size;
-  //document.getElementById("tail").innerHTML = s.x + "," + s.y;
+  document.getElementById("score").innerHTML = s.size;
   if (s.die() === true) {
     s.reset();
   }
@@ -23,12 +22,12 @@ function draw() {
 // Key presses
 function keyPressed() {
   if (keyCode === UP_ARROW) {
-    s.dir(0, -1);
+    s.dir(0, -spd);
   } else if (keyCode === DOWN_ARROW) {
-    s.dir(0, 1);
+    s.dir(0, spd);
   } else if (keyCode === RIGHT_ARROW) {
-    s.dir(1, 0);
+    s.dir(spd, 0);
   } else if (keyCode === LEFT_ARROW) {
-    s.dir(-1, 0);
+    s.dir(-spd, 0);
   }
 } 
