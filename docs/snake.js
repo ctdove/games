@@ -85,7 +85,7 @@ function Apple () {
   this.y = Math.ceil(Math.random() * (height - scl) / scl) * scl
 
   this.update = function () {
-    fill(200, 0, 200)
+    fill(200, 0, 0)
     rect(this.x, this.y, scl, scl)
   }
 
