@@ -34,7 +34,7 @@ function Snake () {
   this.update = function () {
     this.move()
     this.eat()
-    fill(255)
+    fill(0, 255, 0)
     var i
     var j
     for (j = segmentx.length; j >= 0; j--) {
