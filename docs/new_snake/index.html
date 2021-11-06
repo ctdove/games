@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Snake</title>
+	<script src="./snake.js"></script>
+  <link rel="stylesheet" href="../style.css" media="all">
+  <link rel="stylesheet" href="./style.css" media="all">
+</head>
+
+<body>
+  <!--<h4>Play the Games</h4>-->
+  <canvas id="snake-game-canvas" class="game game-canvas"></canvas>
+	<h3 id="score-counter"></h3>
+  <script>
+    makeSnakeGame(
+          document.querySelector('canvas#snake-game-canvas'),
+          512, 512
+    );
+  </script>
+  <br><br>
+  <a class="game-link" href="../index.html">Go Back</a>
+  <br><br>
+</body>
+</html>
